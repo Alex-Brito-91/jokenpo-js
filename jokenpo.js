@@ -5,26 +5,30 @@ let totalJogos = 0;
 let modo = "normal";
 let rodadaAtual = 0;
 
-document.getElementById('modo').addEventListener('change', function() {
+document.getElementById('modo').addEventListener('change', function () {
     modo = this.value;
     reiniciarJogo();
 });
 
-document.getElementById('pedra').addEventListener('click', function() {
+document.getElementById('pedra').addEventListener('click', function () {
     jogar('pedra');
 });
 
-document.getElementById('papel').addEventListener('click', function() {
+document.getElementById('papel').addEventListener('click', function () {
     jogar('papel');
 });
 
-document.getElementById('tesoura').addEventListener('click', function() {
+document.getElementById('tesoura').addEventListener('click', function () {
     jogar('tesoura');
 });
 
 document.getElementById('reiniciar').addEventListener('click', reiniciarJogo);
 
 function jogar(escolhaUsuario) {
+    if (modo !== "normal" && rodadaAtual >= modo) {
+        return;
+    }
+
     const escolhas = ['pedra', 'papel', 'tesoura'];
     const escolhaMaquina = escolhas[Math.floor(Math.random() * 3)];
     let resultado = '';
@@ -48,6 +52,7 @@ function jogar(escolhaUsuario) {
     rodadaAtual++;
 
     document.getElementById('resultado').textContent = `Você escolheu ${escolhaUsuario}, computador escolheu ${escolhaMaquina}. ${resultado}`;
+    document.getElementById('mensagem-final').textContent = '';
     atualizarPlacar();
     checarFimJogo();
 }
@@ -60,8 +65,8 @@ function atualizarPlacar() {
 
 function checarFimJogo() {
     if (modo !== "normal" && rodadaAtual >= modo) {
-        let vencedor = vitorias > derrotas ? 'Você venceu o jogo!' : (derrotas > vitorias ? 'Você perdeu o jogo!' : 'O jogo ficou Empatado!');
-        document.getElementById('resultado').textContent += ` ${vencedor}`;
+        let vencedor = vitorias > derrotas ? 'Você venceu o jogo!' : (derrotas > vitorias ? 'Você perdeu o jogo!' : 'O jogo terminou empatado!');
+        document.getElementById('mensagem-final').textContent = vencedor;
         estatisticasJogo();
     }
 }
@@ -73,6 +78,7 @@ function reiniciarJogo() {
     totalJogos = 0;
     rodadaAtual = 0;
     document.getElementById('resultado').textContent = '';
+    document.getElementById('mensagem-final').textContent = '';
     document.getElementById('estatisticas').textContent = '';
     atualizarPlacar();
 }
