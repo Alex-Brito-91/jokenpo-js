@@ -46,7 +46,7 @@ Este é um jogo de Jokenpô (Pedra, Papel e Tesoura) implementado em JavaScript,
 ## Como Executar o Jogo
 
 1. **Clone o Repositório:**
-   - Clone o repositório para o seu computador usando o comando `git clone <URL do Repositório>`.
+   - Clone o repositório para o seu computador usando o comando `git clone <https://github.com/Alex-Brito-91/jokenpo-js.git>`.
 
 2. **Abra o Arquivo `index.html`:**
    - Navegue até a pasta do projeto e abra o arquivo `index.html` em seu navegador preferido.
