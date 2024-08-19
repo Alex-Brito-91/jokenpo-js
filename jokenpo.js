@@ -60,8 +60,8 @@ function atualizarPlacar() {
 
 function checarFimJogo() {
     if (modo !== "normal" && rodadaAtual >= modo) {
-        let winner = vitorias > derrotas ? 'Você venceu o jogo!' : (derrotas > vitorias ? 'Você perdeu o jogo!' : 'O jogo ficou Empatado!');
-        document.getElementById('resultado').textContent += ` ${winner}`;
+        let vencedor = vitorias > derrotas ? 'Você venceu o jogo!' : (derrotas > vitorias ? 'Você perdeu o jogo!' : 'O jogo ficou Empatado!');
+        document.getElementById('resultado').textContent += ` ${vencedor}`;
         estatisticasJogo();
     }
 }
